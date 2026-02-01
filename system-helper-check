@@ -1,0 +1,39 @@
+#!/bin/bash
+# Execute the command sudo chmod +x /usr/local/bin/system-helper-check
+
+echo "-------------------------------------------------------------------"
+echo "SYSTEM HELPER CHECK - Quick Commands  ----- Doragon-Hitsukaya ----"
+echo "-------------------------------------------------------------------"
+echo
+echo "FILE & DIRECTORY OWNERSHIP"
+echo "--------------------------"
+echo "- sudo chown -R nginx:nginx /path/to/app/storage"
+echo "- sudo chown -R nginx:nginx /path/to/app/bootstrap/cache"
+echo "- sudo chown -h nginx:nginx /path/to/app/public/storage  # symlink"
+echo
+echo "- sudo find /path/to/app/storage -type d -exec chmod 775 {} \\;"
+echo "- sudo find /path/to/app/storage -type f -exec chmod 664 {} \\;"
+echo "- sudo find /path/to/app/bootstrap/cache -type d -exec chmod 775 {} \\;"
+echo "- sudo find /path/to/app/bootstrap/cache -type f -exec chmod 664 {} \\;"
+echo
+echo "SELINUX CONTEXT"
+echo "--------------------------"
+echo "- ls -ldZ /path/to/app/storage"
+echo "- ls -ldZ /path/to/app/bootstrap/cache"
+echo "- ls -ldZ /path/to/app/public/storage"
+echo
+echo "Fix context if needed"
+echo "- sudo semanage fcontext -a -t httpd_sys_rw_content_t \"/path/to/app/storage(/.*)?\""
+echo "- sudo semanage fcontext -a -t httpd_sys_rw_content_t \"/path/to/app/bootstrap/cache(/.*)?\""
+echo "- sudo semanage fcontext -a -t httpd_sys_rw_content_t \"/path/to/app/public/storage(/.*)?\""
+echo "- sudo restorecon -Rv /path/to/app/storage"
+echo "- sudo restorecon -Rv /path/to/app/bootstrap/cache"
+echo "- sudo restorecon -Rv /path/to/app/public/storage"
+echo
+echo "WEB SERVER"
+echo "- sudo systemctl restart nginx"
+echo "- sudo systemctl restart php-fpm"
+echo
+echo "BACKUP / FILES"
+echo "- tar -czvf backup.tar.gz /path/to/folder"
+echo "- tar -xzvf backup.tar.gz -C /restore/path"
