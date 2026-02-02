@@ -16,6 +16,11 @@ echo "- sudo find /path/to/app/storage -type f -exec chmod 664 {} \\;"
 echo "- sudo find /path/to/app/bootstrap/cache -type d -exec chmod 775 {} \\;"
 echo "- sudo find /path/to/app/bootstrap/cache -type f -exec chmod 664 {} \\;"
 echo
+echo "Make file livewire-tmp"
+echo "- sudo mkdir -p storage/framework/livewire-tmp"
+echo "- sudo chown -R nginx:nginx storage/framework/livewire-tmp"
+echo "- sudo chmod 775 storage/framework/livewire-tmp"
+echo
 echo "SELINUX CONTEXT"
 echo "--------------------------"
 echo "- ls -ldZ /path/to/app/storage"
