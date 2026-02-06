@@ -142,7 +142,12 @@ setsebool -P httpd_can_network_connect on
   ```
   tail -f /var/log/audit/audit.log | grep AVC
   ```
-  
+
+## IMPORTANT DEZACTIVATE RCPBIND
+```
+sudo systemctl disable --now rpcbind rpcbind.socket
+sudo systemctl mask rpcbind rpcbind.socket
+``` 
 
 ## 7. References
 
