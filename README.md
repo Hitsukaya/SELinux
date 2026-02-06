@@ -147,7 +147,12 @@ setsebool -P httpd_can_network_connect on
 ```
 sudo systemctl disable --now rpcbind rpcbind.socket
 sudo systemctl mask rpcbind rpcbind.socket
-``` 
+```
+# Verify 
+```
+sudo ss -tulpen
+sudo lsof -i -P -n | head
+```
 
 ## 7. References
 
